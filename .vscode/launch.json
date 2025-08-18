@@ -1,0 +1,40 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Server",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/server/index.ts",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "skipFiles": ["<node_internals>/**"],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "console": "integratedTerminal",
+      "restart": true,
+      "protocol": "inspector"
+    },
+    {
+      "name": "Build Project",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "build"],
+      "skipFiles": ["<node_internals>/**"],
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Type Check",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "check"],
+      "skipFiles": ["<node_internals>/**"],
+      "console": "integratedTerminal"
+    }
+  ]
+}

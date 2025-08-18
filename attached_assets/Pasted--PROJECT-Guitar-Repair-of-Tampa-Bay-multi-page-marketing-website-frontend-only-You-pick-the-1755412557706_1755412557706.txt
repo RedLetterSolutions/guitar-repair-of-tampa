@@ -1,0 +1,136 @@
+**PROJECT:** “Guitar Repair of Tampa Bay” multi-page marketing website (frontend only). You pick the stack. Priorities: clean, fast, accessible (WCAG AA), mobile-first, SEO-ready. Build production-quality code with a component system and clear TODOs for any backend hookups.
+
+**Brand facts to use (verbatim where shown):**
+
+* Business name: **Guitar Repair of Tampa Bay**
+* Address: **7705 Ann Ballard Road, Tampa, FL 33634**
+* Phone: **(813) 304-2560**
+* Ethos snippets:
+
+  * “The best guitar shop in South Florida.”
+  * “You can’t beat our prices and comprehensive experience.”
+  * “Personalized first-class service.”
+* Product line: **Crackercaster** — custom guitars featuring woods indigenous to Florida.
+* Pricing notes: **Labor only; parts extra; estimates may change with hidden defects; \$40 minimum rush fee.**
+
+**Pages & routes (top nav):**
+
+1. **Home** `/`
+
+   * Hero: headline + subcopy + CTAs: “Call Now” (tel link) and “Request a Quote”
+   * Services grid (Setups, Fretwork, Electronics, Structural Repairs)
+   * “Why choose us” (experience, turnaround, fair pricing, vintage expertise)
+   * Crackercaster highlight card linking to `/custom-guitars`
+   * Testimonials preview carousel (static sample content)
+   * Address + mini map placeholder + hours block
+2. **Guitar Repairs** `/guitar-repairs`
+
+   * Category sections with short blurbs
+   * **Price table** (examples):
+
+     * Setups: Acoustic or fixed-bridge electric **\$60**; Floyd/Kahler **\$70**; Steinberger Trans-Trem **\$120**
+     * Restring/Tune/Polish: 6-string or bass **\$25**; 12-string **\$35**; classical **\$35**
+     * Nut/Saddle: plastic nut **\$25**; graphite/bone nut **\$60** (12-string **\$70**); compensated bone saddle **\$85**
+     * Fretwork: level/crown **\$120+**; refret (unbound **\$280**, bound **\$380**, lacquered maple **\$380**)
+     * Electronics: pickup install **\$25+**; jack **\$25**; switch **\$25+**; 1 pot **\$25** (+\$5 each additional); coil-tap/phase **\$30**; full rewire Strat/Gibson **\$80**; shielding **\$80**; preamp **\$80+**
+     * Bridge/Router: reglue acoustic bridge **\$100**; pin holes ream **\$25**; new bridge **\$125+**; pickup rout **\$50**; Floyd install **\$150**; recessed rout **\$250**; cavity rout **\$250**; acoustic saddle slot **\$80**
+     * Other: bolt-on neck replace (incl. light fret dress, nut, tuners, setup; no finish) **\$125+**; endpin jack **\$35+**; neck reset **\$450+**; headstock repair **\$100+** / with cosmetics **\$150+**; heel glue **\$100+**; crack cleat **\$30/in**; pickguard replace **\$50+**; paint/touch-up & finish buff — **Call**
+   * Pricing disclaimer block (labor-only, parts extra, estimates caveat, rush fee)
+   * CTA: “Request a Quote”
+3. **Custom Guitars (Crackercaster)** `/custom-guitars`
+
+   * Intro to Florida-woods concept
+   * Model cards (e.g., “Crackercaster T”, “Crackercaster 5-string Bass”) with image placeholders
+   * Build-process steps (consult → spec → build → setup → delivery)
+   * Inquiry form (front-end only)
+4. **About** `/about`
+
+   * Bio cards:
+
+     * **Michael Donner:** 30-year industry veteran; roles at Washburn (AB40/AB20 acoustic basses), Gibson Strings (artist programs), Peavey (Cyberbass, Cirrus), Parker (Fly Bass), Dean/Luna (Pace Bass); MQD Consulting; now serving Tampa Bay with a customer-first ethos.
+     * **Ben Chafin:** Former head builder/designer at Dean Guitars; founder of Chafin Custom Guitars; vintage repair expertise; player-driven approach.
+   * Shop mission/values
+5. **Gallery** `/gallery`
+
+   * Masonry/justified grid with filters: Acoustic / Electric / Bass / Structural / Finish
+6. **Blog** `/blog` + **Post** `/blog/[slug]`
+
+   * Categories: Setups, Electronics, Vintage, Crackercaster
+   * List page and single-post template with share links
+7. **Contact** `/contact`
+
+   * Phone, address, hours
+   * **Quote/Contact form** fields: Name, Email, Phone, Instrument Type, Service Type (select), Description, Image Upload (front-end only), consent checkbox
+   * Embedded map placeholder
+8. **Directions** `/directions`
+
+   * Map embed placeholder, parking/entrance notes, nearby landmarks
+9. **Suppliers** `/suppliers`
+
+   * Responsive logo grid for brands (Floyd Rose, Fender, Taylor, PRS, Dean, Gretsch, Guild, Chafin Custom, Bedell, Babicz, Graph Tech, L.R. Baggs, Seymour Duncan, EMG, ALLPARTS, Lollar, Bartolini, Lace, TonePros, Luthiers Supply, Aguilar, Stewart-MacDonald, Stellartone, Moe Colors, Wilkins, WD Music)
+
+**Footer/Global:**
+
+* Sticky header with logo + nav + primary CTA (“Request a Quote”)
+* Footer: NAP (name, address, phone), hours, quick links, socials, brand-logo strip
+* Sitewide alert bar component (e.g., turnaround time updates)
+
+**Components to implement:**
+
+* Hero, ServicesCard, PriceTable, BioCard, SupplierLogoGrid, TestimonialCarousel, GalleryGrid (with client-side filters), ContactForm (with file input), MapEmbed (placeholder), AlertBar, Badge/Chip, SectionHeading, CTA buttons.
+
+**Design requirements:**
+
+* Modern, minimal, high-contrast; subtle shadows; large tap targets; smooth but restrained animations (prefers CSS over heavy JS).
+* Image handling: lazy-load, responsive `srcset`, WebP/AVIF fallbacks.
+* Icons: use a lightweight icon set (or inline SVGs).
+* Form UX: inline validation, accessible labels/ARIA, honeypot or basic spam guard.
+
+**SEO & structured data:**
+
+* Per-page `<title>` and meta description.
+* JSON-LD:
+
+  * `LocalBusiness` (address/phone/hours) on Home & Contact
+  * `Service` for key repair categories on Repairs
+  * `Product` for Crackercaster models on Custom Guitars
+  * `FAQPage` on FAQ (if you add one)
+* Open Graph/Twitter cards; default social image.
+
+**Performance & quality:**
+
+* Lighthouse target ≥ 95 for Performance/Best Practices/SEO, ≥ 90 for Accessibility.
+* No layout shift on core pages; pre-size images; use system fonts or one performance-friendly webfont with `swap`.
+* Bundle splitting and code-splitting for routes.
+
+**Content placeholders:**
+
+* Replace all images with placeholders.
+* Stub 3–5 testimonials.
+* Hours: Mon–Fri 10–6, Sat 10–4, Sun Closed (placeholder—make editable).
+* Add TODOs where backend/services will be wired (form handling, storage, CMS).
+
+**Accessibility:**
+
+* Semantic landmarks (`header`, `nav`, `main`, `footer`).
+* Keyboard focus visible; trap in modals; skip-to-content link.
+* Alt text generator for gallery placeholders (use filename to seed).
+
+**Deliverables:**
+
+* Multi-page site scaffold with routes above.
+* Reusable component library.
+* Sample content filled with the facts in this brief.
+* README with:
+
+  * Build/run instructions
+  * Where to replace images/content
+  * How to add posts to `/blog`
+  * TODOs for backend (form submit endpoint, storage, CMS)
+
+**Extra:**
+
+* Add a simple `/quote` landing that mirrors the Contact form and is CTA-optimized.
+* Add a site-wide JSON config (shop name, phone, address, hours) for single-source edits.
+
+Build it now.
