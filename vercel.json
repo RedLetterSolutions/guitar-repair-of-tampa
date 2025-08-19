@@ -12,7 +12,7 @@
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist"
+        "distDir": "dist/public"
       }
     }
   ],
@@ -22,9 +22,12 @@
       "dest": "/server/index.ts"
     },
     {
+      "src": "/assets/(.*)",
+      "dest": "/dist/public/assets/$1"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/dist/$1"
+      "dest": "/dist/public/index.html"
     }
-  ],
-  "outputDirectory": "dist"
+  ]
 }
