@@ -26,10 +26,5 @@
       "dest": "/dist/$1"
     }
   ],
-  "outputDirectory": "dist",
-  "functions": {
-    "server/index.ts": {
-      "includeFiles": "shared/**"
-    }
-  }
+  "outputDirectory": "dist"
 }
