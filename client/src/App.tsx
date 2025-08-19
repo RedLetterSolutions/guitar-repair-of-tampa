@@ -12,8 +12,6 @@ import GuitarRepairs from "@/pages/GuitarRepairs";
 import CustomGuitars from "@/pages/CustomGuitars";
 import About from "@/pages/About";
 import Gallery from "@/pages/Gallery";
-import Blog from "@/pages/Blog";
-import BlogPost from "@/pages/BlogPost";
 import Contact from "@/pages/Contact";
 import Directions from "@/pages/Directions";
 import Suppliers from "@/pages/Suppliers";
@@ -31,8 +29,6 @@ function Router() {
           <Route path="/custom-guitars" component={CustomGuitars} />
           <Route path="/about" component={About} />
           <Route path="/gallery" component={Gallery} />
-          <Route path="/blog" component={Blog} />
-          <Route path="/blog/:slug" component={BlogPost} />
           <Route path="/contact" component={Contact} />
           <Route path="/directions" component={Directions} />
           <Route path="/suppliers" component={Suppliers} />

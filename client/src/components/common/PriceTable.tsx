@@ -91,15 +91,15 @@ export default function PriceTable({ categories = true, responsiveLayout = true 
   const getColorClasses = (color: string) => {
     switch (color) {
       case "primary":
-        return "bg-primary text-white";
+        return "bg-primary text-cream";
       case "accent":
-        return "bg-accent text-white";
+        return "brass-accent text-foreground";
       case "success":
-        return "bg-success text-white";
+        return "bg-success text-cream";
       case "secondary":
-        return "bg-secondary text-white";
+        return "bg-secondary text-cream";
       default:
-        return "bg-primary text-white";
+        return "bg-primary text-cream";
     }
   };
 
@@ -108,11 +108,11 @@ export default function PriceTable({ categories = true, responsiveLayout = true 
       case "primary":
         return "text-primary";
       case "accent":
-        return "text-accent";
+        return "text-brass-dark";
       case "success":
-        return "text-success";
+        return "text-primary";
       case "secondary":
-        return "text-secondary";
+        return "text-primary";
       default:
         return "text-primary";
     }
@@ -121,16 +121,16 @@ export default function PriceTable({ categories = true, responsiveLayout = true 
   return (
     <div className="space-y-8">
       {Object.entries(priceData).map(([key, category]) => (
-        <div key={key} className="bg-white rounded-xl shadow-soft overflow-hidden">
+        <div key={key} className="bg-background rounded-xl shadow-strong overflow-hidden border border-wood-medium">
           <div className={`${getColorClasses(category.color)} px-6 py-4`}>
             <h3 className="text-2xl font-bold">{category.title}</h3>
           </div>
-          <div className="p-6">
+          <div className="p-6 bg-cream">
             <div className={`grid ${responsiveLayout ? 'md:grid-cols-2 lg:grid-cols-3' : ''} gap-4`}>
               {category.items.map((item, index) => (
-                <div key={index} className="flex justify-between items-start py-3 border-b border-border last:border-b-0">
-                  <span className="text-foreground flex-1 pr-4">{item.service}</span>
-                  <span className={`font-bold ${getPriceColorClasses(category.color)} whitespace-nowrap`}>
+                <div key={index} className="flex justify-between items-start py-3 border-b border-wood-light last:border-b-0">
+                  <span className="text-primary flex-1 pr-4 font-medium">{item.service}</span>
+                  <span className={`font-bold ${getPriceColorClasses(category.color)} whitespace-nowrap text-lg`}>
                     {item.price}
                   </span>
                 </div>
@@ -141,9 +141,9 @@ export default function PriceTable({ categories = true, responsiveLayout = true 
       ))}
 
       {/* Pricing Disclaimer */}
-      <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-6">
-        <h4 className="font-bold text-yellow-800 mb-3">Pricing Information</h4>
-        <ul className="text-yellow-700 space-y-2">
+      <div className="bg-background border border-brass rounded-xl p-6 shadow-strong">
+        <h4 className="font-bold text-primary mb-4 text-lg">Pricing Information</h4>
+        <ul className="text-primary space-y-2 text-sm font-medium">
           <li>• All prices are for labor only; parts are additional</li>
           <li>• Estimates may change if hidden defects are discovered</li>
           <li>• $40 minimum rush fee for expedited service</li>

@@ -1,3 +1,4 @@
+import { Zap, DollarSign } from "lucide-react";
 import SEOHead from "@/components/common/SEOHead";
 import SupplierGrid from "@/components/common/SupplierGrid";
 
@@ -80,7 +81,7 @@ export default function Suppliers() {
 
               <div className="text-center">
                 <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <div className="text-2xl">⚡</div>
+                  <Zap className="w-8 h-8 text-accent" />
                 </div>
                 <h3 className="text-xl font-semibold text-foreground mb-3">Fast Sourcing</h3>
                 <p className="text-muted-foreground">

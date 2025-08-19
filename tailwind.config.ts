@@ -61,6 +61,25 @@ export default {
           border: "var(--sidebar-border)",
           ring: "var(--sidebar-ring)",
         },
+        // Guitar theme colors
+        wood: {
+          light: "var(--wood-light)",
+          medium: "var(--wood-medium)",
+          dark: "var(--wood-dark)",
+        },
+        mahogany: "var(--mahogany)",
+        ebony: "var(--ebony)",
+        brass: {
+          light: "var(--brass-light)",
+          DEFAULT: "var(--brass)",
+          dark: "var(--brass-dark)",
+        },
+        steel: {
+          light: "var(--steel-light)",
+          DEFAULT: "var(--steel)",
+          dark: "var(--steel-dark)",
+        },
+        cream: "var(--cream)",
       },
       fontFamily: {
         sans: ["var(--font-sans)"],

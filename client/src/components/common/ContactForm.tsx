@@ -126,15 +126,15 @@ export default function ContactForm({
   return (
     <div className="max-w-2xl mx-auto">
       <div className="text-center mb-8">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+        <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
           {title || defaultTitle}
         </h2>
-        <p className="text-xl text-muted-foreground">
+        <p className="text-xl text-secondary">
           Tell us about your instrument and we'll provide a detailed estimate
         </p>
       </div>
 
-      <form onSubmit={form.handleSubmit(onSubmit)} className="bg-muted/50 rounded-2xl p-8 space-y-6">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="bg-background rounded-2xl p-8 space-y-6 shadow-strong border border-wood-light">
         {/* Honeypot field */}
         <input
           type="text"
@@ -235,7 +235,7 @@ export default function ContactForm({
         {showFileUpload && (
           <div className="space-y-2">
             <Label htmlFor="images">Upload Images (Optional)</Label>
-            <div className="border-2 border-dashed border-border rounded-lg p-6 text-center hover:border-primary/50 transition-colors">
+            <div className="border-2 border-dashed border-brass-light rounded-lg p-6 text-center hover:border-brass transition-colors bg-wood-light/50">
               <input
                 type="file"
                 id="images"
@@ -245,8 +245,8 @@ export default function ContactForm({
                 className="hidden"
               />
               <label htmlFor="images" className="cursor-pointer">
-                <Upload className="w-8 h-8 mx-auto mb-2 text-muted-foreground" />
-                <p className="text-muted-foreground mb-2">Click to upload photos of your instrument</p>
+                <Upload className="w-8 h-8 mx-auto mb-2 text-brass" />
+                <p className="text-secondary mb-2">Click to upload photos of your instrument</p>
                 <p className="text-sm text-muted-foreground">JPG, PNG, or WEBP (Max 10MB each, 5 files max)</p>
               </label>
             </div>
@@ -255,14 +255,14 @@ export default function ContactForm({
               <div className="space-y-2">
                 <p className="text-sm font-medium">Selected files:</p>
                 {selectedFiles.map((file, index) => (
-                  <div key={index} className="flex items-center justify-between bg-background p-2 rounded border">
-                    <span className="text-sm truncate">{file.name}</span>
+                  <div key={index} className="flex items-center justify-between bg-cream p-2 rounded border border-wood-light">
+                    <span className="text-sm truncate text-secondary">{file.name}</span>
                     <Button
                       type="button"
                       variant="ghost"
                       size="sm"
                       onClick={() => removeFile(index)}
-                      className="h-8 w-8 p-0"
+                      className="h-8 w-8 p-0 hover:bg-wood-light"
                     >
                       <X className="w-4 h-4" />
                     </Button>
@@ -279,7 +279,7 @@ export default function ContactForm({
             checked={form.watch("consent")}
             onCheckedChange={(checked) => form.setValue("consent", checked as boolean)}
           />
-          <Label htmlFor="consent" className="text-sm leading-relaxed">
+          <Label htmlFor="consent" className="text-sm leading-relaxed text-secondary">
             I consent to Guitar Repair of Tampa Bay contacting me about my repair inquiry via email or phone. *
           </Label>
         </div>

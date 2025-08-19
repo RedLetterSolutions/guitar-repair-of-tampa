@@ -134,24 +134,30 @@ export default function Contact() {
                 Located in the heart of Tampa Bay, easily accessible with plenty of parking.
               </p>
             </div>
-            <div className="relative">
-              {/* TODO: Implement Google Maps embed */}
-              <div className="bg-muted h-96 flex items-center justify-center">
-                <div className="text-center text-muted-foreground">
-                  <MapPin className="w-16 h-16 mx-auto mb-4" />
-                  <p className="text-lg font-medium">Interactive Map</p>
-                  <p className="text-sm">{siteConfig.contact.address.full}</p>
-                  <p className="text-xs mt-2">Google Maps integration coming soon</p>
-                  <div className="mt-4">
-                    <a
-                      href={`https://maps.google.com/?q=${encodeURIComponent(siteConfig.contact.address.full)}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-primary hover:text-primary/80 underline"
-                    >
-                      View on Google Maps →
-                    </a>
-                  </div>
+            <div className="relative bg-white rounded-xl shadow-soft overflow-hidden">
+              <div className="relative h-96">
+                <iframe
+                  src={`https://maps.google.com/maps?q=${encodeURIComponent(siteConfig.contact.address.full)}&t=&z=15&ie=UTF8&iwloc=&output=embed`}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title={`Map showing location of ${siteConfig.name} at ${siteConfig.contact.address.full}`}
+                  className="w-full h-full"
+                />
+                {/* Overlay with link to full Google Maps */}
+                <div className="absolute top-4 left-4 z-10">
+                  <a
+                    href={`https://maps.google.com/?q=${encodeURIComponent(siteConfig.contact.address.full)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white/95 backdrop-blur-sm text-primary hover:text-primary/80 px-3 py-2 rounded-lg shadow-lg text-sm font-medium transition-colors inline-flex items-center gap-2"
+                  >
+                    <MapPin className="w-4 h-4" />
+                    View Larger Map
+                  </a>
                 </div>
               </div>
             </div>

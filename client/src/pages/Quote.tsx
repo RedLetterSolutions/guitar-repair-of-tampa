@@ -149,7 +149,7 @@ export default function Quote() {
               href="tel:8133042560"
               className="btn-accent text-lg px-8 py-4"
             >
-              📞 Call (813) 304-2560
+              Call (813) 304-2560
             </a>
           </div>
         </div>

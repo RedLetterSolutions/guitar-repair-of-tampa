@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { X } from "lucide-react";
+import { X, Clock } from "lucide-react";
 
 export default function AlertBar() {
   const [isVisible, setIsVisible] = useState(true);
@@ -9,7 +9,10 @@ export default function AlertBar() {
   return (
     <div className="bg-accent text-white py-2 px-4 text-center text-sm font-medium" role="alert">
       <div className="container flex items-center justify-between">
-        <span>🎸 Current turnaround time: 7-10 business days for standard repairs</span>
+        <span className="flex items-center gap-2">
+          <Clock className="w-4 h-4" />
+          Current turnaround time: 7-10 business days for standard repairs
+        </span>
         <button 
           onClick={() => setIsVisible(false)}
           className="text-white hover:text-gray-200 ml-4 p-1 rounded focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-accent"

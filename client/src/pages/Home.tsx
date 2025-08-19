@@ -4,7 +4,7 @@ import Hero from "@/components/common/Hero";
 import ServicesGrid from "@/components/common/ServicesGrid";
 import TestimonialCarousel from "@/components/common/TestimonialCarousel";
 import { siteConfig } from "@shared/config";
-import { MapPin, Clock, Phone } from "lucide-react";
+import { MapPin, Clock, Phone, Zap, DollarSign } from "lucide-react";
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -35,7 +35,7 @@ export default function Home() {
       
       {/* Hero Section */}
       <Hero 
-        backgroundImage="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080"
+        backgroundImage="https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080"
       />
 
       {/* Services Grid */}
@@ -61,7 +61,7 @@ export default function Home() {
 
             <div className="text-center">
               <div className="bg-accent/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <div className="text-2xl">⚡</div>
+                <Zap className="w-8 h-8 text-accent" />
               </div>
               <h3 className="text-xl font-semibold mb-3">Fast Turnaround</h3>
               <p className="text-muted-foreground">Most repairs completed within 7-10 business days with rush service available</p>
@@ -69,7 +69,7 @@ export default function Home() {
 
             <div className="text-center">
               <div className="bg-success/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <div className="text-2xl">💰</div>
+                <DollarSign className="w-8 h-8 text-success" />
               </div>
               <h3 className="text-xl font-semibold mb-3">Fair Pricing</h3>
               <p className="text-muted-foreground">Competitive rates with no hidden fees. Labor only pricing, parts extra</p>
@@ -155,14 +155,33 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Map Placeholder */}
+          {/* Interactive Map */}
           <div className="mt-12">
-            <div className="bg-muted rounded-xl h-64 flex items-center justify-center">
-              <div className="text-center text-muted-foreground">
-                <MapPin className="w-16 h-16 mx-auto mb-4" />
-                <p className="text-lg font-medium">Interactive Map</p>
-                <p className="text-sm">{siteConfig.contact.address.full}</p>
-                <p className="text-xs mt-2">TODO: Implement Google Maps embed</p>
+            <div className="bg-white rounded-xl shadow-soft overflow-hidden">
+              <div className="relative h-64">
+                <iframe
+                  src={`https://maps.google.com/maps?q=${encodeURIComponent(siteConfig.contact.address.full)}&t=&z=15&ie=UTF8&iwloc=&output=embed`}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title={`Map showing location of ${siteConfig.name} at ${siteConfig.contact.address.full}`}
+                  className="w-full h-full"
+                />
+                {/* Overlay with link to full Google Maps */}
+                <div className="absolute top-4 left-4 z-10">
+                  <a
+                    href={`https://maps.google.com/?q=${encodeURIComponent(siteConfig.contact.address.full)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white/95 backdrop-blur-sm text-primary hover:text-primary/80 px-3 py-2 rounded-lg shadow-lg text-sm font-medium transition-colors inline-flex items-center gap-2"
+                  >
+                    <MapPin className="w-4 h-4" />
+                    Visit Our Shop
+                  </a>
+                </div>
               </div>
             </div>
           </div>

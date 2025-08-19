@@ -34,25 +34,25 @@ export const siteConfig = {
   services: [
     {
       name: "Setups",
-      icon: "🔧",
+      icon: "Settings",
       description: "Complete guitar optimization for perfect playability and tone",
       startingPrice: "$60"
     },
     {
       name: "Fretwork", 
-      icon: "🎸",
+      icon: "Music",
       description: "Precision fret leveling, crowning, and complete refrets",
       startingPrice: "$120"
     },
     {
       name: "Electronics",
-      icon: "⚡",
+      icon: "Zap",
       description: "Pickup installation, wiring, and electronic upgrades", 
       startingPrice: "$25"
     },
     {
       name: "Structural Repairs",
-      icon: "🔨",
+      icon: "Wrench",
       description: "Crack repairs, neck resets, and restoration work",
       startingPrice: "$100"
     }

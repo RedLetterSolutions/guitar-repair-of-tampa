@@ -99,13 +99,29 @@ export default function Directions() {
 
             {/* Map */}
             <div className="bg-white rounded-xl shadow-soft overflow-hidden">
-              {/* TODO: Implement Google Maps embed */}
-              <div className="bg-muted h-96 flex items-center justify-center">
-                <div className="text-center text-muted-foreground">
-                  <MapPin className="w-16 h-16 mx-auto mb-4" />
-                  <p className="text-lg font-medium">Interactive Map</p>
-                  <p className="text-sm">{address.full}</p>
-                  <p className="text-xs mt-2">Google Maps integration coming soon</p>
+              <div className="relative h-96">
+                <iframe
+                  src={`https://maps.google.com/maps?q=${encodeURIComponent(address.full)}&t=&z=15&ie=UTF8&iwloc=&output=embed`}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title={`Map showing location of ${siteConfig.name} at ${address.full}`}
+                  className="w-full h-full"
+                />
+                {/* Overlay with link to full Google Maps */}
+                <div className="absolute top-4 left-4 z-10">
+                  <a
+                    href={googleMapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white/95 backdrop-blur-sm text-primary hover:text-primary/80 px-3 py-2 rounded-lg shadow-lg text-sm font-medium transition-colors inline-flex items-center gap-2"
+                  >
+                    <MapPin className="w-4 h-4" />
+                    View Larger Map
+                  </a>
                 </div>
               </div>
             </div>

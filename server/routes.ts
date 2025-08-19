@@ -5,7 +5,6 @@ import { z } from "zod";
 import { 
   insertContactSubmissionSchema, 
   insertCustomGuitarInquirySchema,
-  insertBlogPostSchema,
   insertGalleryItemSchema,
   insertTestimonialSchema
 } from "@shared/schema";
@@ -86,41 +85,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
         error: "Invalid form data",
         details: error instanceof z.ZodError ? error.errors : undefined
       });
-    }
-  });
-
-  // Blog posts endpoints
-  app.get("/api/blog", async (req, res) => {
-    try {
-      const category = req.query.category as string;
-      
-      // TODO: Implement blog post retrieval from storage
-      // const posts = await storage.getBlogPosts({ 
-      //   category: category !== "all" ? category : undefined,
-      //   published: true,
-      //   limit: 20
-      // });
-      
-      // Mock response for now
-      res.status(200).json([]);
-    } catch (error) {
-      console.error("Blog posts retrieval error:", error);
-      res.status(500).json({ error: "Failed to retrieve blog posts" });
-    }
-  });
-
-  app.get("/api/blog/:slug", async (req, res) => {
-    try {
-      const { slug } = req.params;
-      
-      // TODO: Implement single blog post retrieval
-      // const post = await storage.getBlogPostBySlug(slug);
-      
-      // Mock response for now
-      res.status(404).json({ error: "Blog post not found" });
-    } catch (error) {
-      console.error("Blog post retrieval error:", error);
-      res.status(500).json({ error: "Failed to retrieve blog post" });
     }
   });
 
