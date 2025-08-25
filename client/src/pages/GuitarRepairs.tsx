@@ -71,16 +71,15 @@ export default function GuitarRepairs() {
           {/* Service Categories */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             <div className="bg-white rounded-xl shadow-soft p-8 border border-wood-light">
-              <h3 className="text-xl font-bold text-primary mb-4">Setups & Maintenance</h3>
+              <h3 className="text-xl font-bold text-primary mb-4">Setups</h3>
               <p className="text-secondary mb-4 leading-relaxed">
-                Complete instrument optimization including action adjustment, intonation, and general maintenance 
+                Complete instrument optimization including action adjustment and intonation 
                 to ensure optimal playability.
               </p>
               <ul className="text-sm text-secondary space-y-2">
                 <li>• String height adjustment</li>
                 <li>• Intonation setup</li>
                 <li>• Pickup height adjustment</li>
-                <li>• Restring and polish</li>
               </ul>
             </div>
 
