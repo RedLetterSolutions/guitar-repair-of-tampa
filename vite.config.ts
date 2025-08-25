@@ -20,6 +20,7 @@ export default defineConfig({
     alias: {
       "@": path.resolve(import.meta.dirname, "client", "src"),
       "@assets": path.resolve(import.meta.dirname, "attached_assets"),
+  "@shared": path.resolve(import.meta.dirname, "shared"),
     },
   },
   root: path.resolve(import.meta.dirname, "client"),

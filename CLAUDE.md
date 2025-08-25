@@ -5,47 +5,23 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Development Commands
 
 ### Core Development
-- `npm run dev` - Start development server on http://127.0.0.1:5000
-- `npm run build` - Build both client and server for production
-- `npm run start` - Run production build
-- `npm run check` - TypeScript type checking
-- `npm run db:push` - Push database schema changes with Drizzle Kit
-
-### VS Code Integration
-- F5 to debug server
-- Ctrl+Shift+P → "Tasks: Run Task" for build tasks
-- Auto-formatting with Prettier on save
+- `npm run dev` - Start Vite development server 
+- `npm run build` - Build for production (outputs to `dist/`)
+- `npm run preview` - Preview production build locally
+- `npm run lint` - TypeScript type checking with `tsc --noEmit`
 
 ## Architecture Overview
 
-### Full-Stack TypeScript Monorepo
-The project uses a **client/server/shared** architecture:
+### Frontend-Only React Application
+The project is a **static frontend application** deployed to Vercel:
 - `client/` - React + Vite frontend with Wouter routing
-- `server/` - Express.js API with Drizzle ORM
-- `shared/` - Type definitions and business configuration
+- `shared/` - Business configuration and types
+- `dist/` - Production build output
 
 ### Key Technologies
 - **Frontend**: React 18, Wouter routing, TailwindCSS, Shadcn/ui components, TanStack Query, React Hook Form + Zod
-- **Backend**: Express.js, Drizzle ORM + PostgreSQL, Zod validation
-- **Shared**: TypeScript strict mode, shared schemas and types
-
-### Database Architecture
-Uses **Drizzle ORM** with PostgreSQL. Schema defined in `shared/schema.ts` generates both runtime validation and TypeScript types:
-- `contactSubmissions` - Form submissions from contact/quote requests  
-- `customGuitarInquiries` - Crackercaster custom guitar inquiries
-- `blogPosts` - SEO content management
-- `galleryItems` - Work showcase images
-- `testimonials` - Customer reviews
-- `users` - Admin authentication
-
-### API Routes Structure
-All API routes under `/api/`:
-- `POST /contact` - Contact form submissions
-- `POST /quotes` - Quote requests
-- `POST /custom-guitar-inquiries` - Custom guitar inquiries
-- `GET /blog`, `GET /blog/:slug` - Blog content
-- `GET /gallery` - Gallery items
-- `GET /testimonials` - Customer testimonials
+- **Build**: Vite with TypeScript, path aliases, and Replit integration plugins
+- **Deployment**: Vercel static site with SPA routing configuration
 
 ### Frontend Page Structure
 9 main routes using Wouter:
@@ -66,37 +42,39 @@ All API routes under `/api/`:
 - `pages/` - Route components
 - `hooks/` - Custom React hooks (mobile detection, toast notifications)
 
+### Path Aliases Configuration
+TypeScript and Vite configured with path aliases:
+- `@/` → `client/src/` (components, pages, hooks, lib)
+- `@shared/` → `shared/` (business configuration)
+- `@assets/` → `attached_assets/` (project assets)
+
 ### Business Configuration
 All business data centralized in `shared/config.ts`:
 - Contact information, hours, pricing disclaimer
-- Service categories with pricing
-- Team member profiles
 - SEO metadata and social media links
-- Used consistently across client and server
+- Exported as typed configuration object
 
 ### State Management Pattern
-- **TanStack Query** for server state (API caching, optimistic updates)
 - **React Hook Form** for complex form state with Zod validation
-- **Local component state** for UI interactions
+- **Local component state** for UI interactions  
 - **No global React context** - architecture avoids prop drilling through component composition
 
 ### Form Handling Strategy
-Heavy emphasis on form validation and user experience:
+Forms are frontend-only with client-side validation:
 - Contact forms, quote requests, custom guitar inquiries
-- File upload support (planned: Google Cloud Storage integration)
-- Zod schemas provide both client and server validation
+- Zod schemas provide client-side validation
 - Honeypot fields for spam protection
-- Comprehensive error handling and user feedback
+- Forms currently display success messages (no backend integration)
 
 ### Development Notes
-- Server binds to `127.0.0.1` (not `0.0.0.0`) to avoid macOS network issues
-- Strict TypeScript configuration across entire stack
+- Strict TypeScript configuration with path aliases
 - Mobile-first responsive design with TailwindCSS breakpoints
 - WCAG AA accessibility compliance throughout
 - SEO optimized with structured data for local business
+- Vercel deployment with SPA routing fallback to `/index.html`
 
 ### Current Status
 - Complete frontend implementation with all pages and components
-- Database schema and API structure defined
-- Mock API responses in place (database integration pending)
+- Static site ready for deployment
+- Forms functional with client-side validation
 - Production-ready foundation with comprehensive type safety
