@@ -127,8 +127,8 @@ export default function GuitarRepairs() {
               <PriceTable />
 
               <div className="text-center mt-8">
-                <Link href="/quote" className="btn-primary">
-                  Request a Quote for Your Repair
+                <Link href="/contact" className="btn-primary">
+                  Request a Repair Quote
                 </Link>
               </div>
             </div>
