@@ -53,7 +53,7 @@ export default function ContactForm({ title, formType, showFileUpload }: Contact
           </div>
           <div className="space-y-2">
             <Label htmlFor="email">Email *</Label>
-            <Input id="email" name="email" type="email" required className="form-input" placeholder="your.email@example.com" />
+            <Input id="email" name="email" type="email" required className="form-input" placeholder="your@email.com" />
           </div>
         </div>
         <div className="grid md:grid-cols-2 gap-6">

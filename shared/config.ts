@@ -9,7 +9,7 @@ export const siteConfig = {
   contact: {
     phone: "(813) 304-2560",
     phoneRaw: "+18133042560",
-    email: "info@example.com",
+    email: "info@guitarrepairoftampabay.com",
     address: {
       street: "7705 Ann Ballard Road",
       city: "Tampa",
@@ -33,7 +33,7 @@ export const siteConfig = {
     defaultTitle: "Guitar Repair of Tampa Bay",
     defaultDescription:
       "Professional guitar repair, setup, custom builds, and vintage instrument restoration in Tampa Bay.",
-    ogImage: "https://example.com/og-image.jpg",
+    ogImage: "https://guitarrepairoftampabay.com/images/og-image.jpg",
     twitterCard: "summary_large_image",
   },
   social: {
