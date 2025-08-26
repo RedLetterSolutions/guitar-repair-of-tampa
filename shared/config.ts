@@ -1,27 +1,33 @@
 export const siteConfig = {
+  // Site identifier used for external contact form service auto-attach
+  siteId: "guitar_repair_of_tampa_bay",
   name: "Guitar Repair of Tampa Bay",
   tagline: "Professional guitar repair, setup, and custom craftsmanship.",
   description:
     "Professional guitar repair, setup, custom builds, and vintage instrument restoration in Tampa Bay.",
   ethos: "Excellence in craftsmanship and customer service",
   contact: {
-    phone: "(555) 123-4567",
-    phoneRaw: "+15551234567",
+    phone: "(813) 304-2560",
+    phoneRaw: "+18133042560",
     email: "info@example.com",
     address: {
-      street: "1234 Sample Ave",
+      street: "7705 Ann Ballard Road",
       city: "Tampa",
       state: "FL",
-      zip: "33602",
+      zip: "33634",
       get full() {
         return `${this.street}, ${this.city}, ${this.state} ${this.zip}`;
       },
     },
   },
   hours: {
-    monday: "10:00 AM - 6:00 PM",
-    saturday: "10:00 AM - 4:00 PM",
+    tuesday: "12:00 PM - 6:00 PM",
+    wednesday: "12:00 PM - 6:00 PM", 
+    thursday: "12:00 PM - 6:00 PM",
+    friday: "12:00 PM - 6:00 PM",
+    saturday: "12:00 PM - 6:00 PM",
     sunday: "Closed",
+    monday: "Closed",
   },
   seo: {
     defaultTitle: "Guitar Repair of Tampa Bay",

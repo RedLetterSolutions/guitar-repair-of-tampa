@@ -12,7 +12,6 @@ export default function Header() {
     { name: "Repairs", href: "/guitar-repairs" },
     { name: "Custom", href: "/custom-guitars" },
     { name: "About", href: "/about" },
-    { name: "Gallery", href: "/gallery" },
     { name: "Contact", href: "/contact" },
   ];
 
@@ -52,7 +51,7 @@ export default function Header() {
               </Link>
             ))}
             <Link
-              href="/quote"
+              href="/contact"
               className="bg-brass text-brass-foreground px-4 py-2 rounded-lg font-semibold hover:bg-brass-dark transition-all duration-200 shadow-soft hover:shadow-lg text-sm whitespace-nowrap"
             >
               Get Quote
@@ -75,10 +74,10 @@ export default function Header() {
               </Link>
             ))}
             <Link
-              href="/quote"
+              href="/contact"
               className="bg-brass text-brass-foreground px-3 py-1.5 rounded-lg font-semibold hover:bg-brass-dark transition-all duration-200 shadow-soft text-xs whitespace-nowrap"
             >
-              Quote
+              Contact
             </Link>
           </div>
 
@@ -117,11 +116,11 @@ export default function Header() {
               ))}
               <div className="px-4 pt-2">
                 <Link
-                  href="/quote"
+                  href="/contact"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="bg-brass text-brass-foreground px-6 py-2 rounded-lg font-semibold hover:bg-brass-dark transition-all duration-200 shadow-soft inline-block text-center w-full"
                 >
-                  Request a Quote
+                  Contact / Get Quote
                 </Link>
               </div>
             </div>

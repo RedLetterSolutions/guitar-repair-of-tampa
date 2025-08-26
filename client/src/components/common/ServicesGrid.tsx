@@ -25,7 +25,7 @@ export default function ServicesGrid({
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
             Our Expert Services
           </h2>
-          <p className="text-xl text-secondary max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Professional guitar repair with 30+ years of industry experience
           </p>
         </div>
@@ -47,7 +47,7 @@ export default function ServicesGrid({
                 <h3 className="text-xl font-semibold mb-3 text-mahogany">
                   {service.name}
                 </h3>
-                <p className="text-secondary mb-4">
+                <p className="text-muted-foreground mb-4">
                   {service.description}
                 </p>
                 {showPricing && (

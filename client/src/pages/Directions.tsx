@@ -155,7 +155,7 @@ export default function Directions() {
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="bg-primary/10 text-primary text-xs font-bold px-2 py-1 rounded-full mt-1">4</span>
-                    <span>We'll be on your right at 7705 Ann Ballard Road</span>
+                    <span>We'll be on your right at {address.street}</span>
                   </li>
                 </ol>
               </div>

@@ -17,9 +17,11 @@ export default function BioCard({
   imagePosition = "left",
   backgroundColor = "bg-muted/50"
 }: BioCardProps) {
-  const imageUrl = `https://images.unsplash.com/photo-${
-    name.includes("Michael") ? "1507003211169-0a1dd7228f2d" : "1472099645785-5658abf4ff4e"
-  }?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600`;
+  const imageUrl = name.includes("Michael") 
+    ? "/images/michael_rgt_top.png"
+    : name.includes("Ben") 
+    ? "/images/ben_chafin.jpeg"
+    : `https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600`;
 
   return (
     <div className={`${backgroundColor} rounded-2xl p-8 md:p-12`}>

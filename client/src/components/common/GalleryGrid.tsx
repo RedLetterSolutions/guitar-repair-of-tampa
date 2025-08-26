@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
 
@@ -80,16 +79,10 @@ export default function GalleryGrid({
   const [activeFilter, setActiveFilter] = useState("all");
   const [lightboxImage, setLightboxImage] = useState<GalleryItem | null>(null);
 
-  // TODO: Replace with actual API call
-  const { data: galleryItems = sampleGalleryItems, isLoading } = useQuery({
-    queryKey: ["/api/gallery"],
-    enabled: false, // Disable until API is implemented
-  });
-
-  const typedGalleryItems = galleryItems as GalleryItem[];
+  // Static gallery items until backend/API is added
   const filteredItems = activeFilter === "all" 
-    ? typedGalleryItems 
-    : typedGalleryItems.filter((item: GalleryItem) => item.category === activeFilter);
+    ? sampleGalleryItems 
+    : sampleGalleryItems.filter((item: GalleryItem) => item.category === activeFilter);
 
   const openLightbox = (item: GalleryItem) => {
     if (lightbox) {
@@ -103,15 +96,7 @@ export default function GalleryGrid({
     document.body.style.overflow = "unset";
   };
 
-  if (isLoading) {
-    return (
-      <div className="container">
-        <div className="text-center py-12">
-          <p className="text-muted-foreground">Loading gallery...</p>
-        </div>
-      </div>
-    );
-  }
+  // No loading state needed for static content
 
   return (
     <>

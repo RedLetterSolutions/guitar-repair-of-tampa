@@ -1,5 +1,4 @@
 import { useParams, Link } from "wouter";
-import { useQuery } from "@tanstack/react-query";
 import SEOHead from "@/components/common/SEOHead";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -56,26 +55,20 @@ const sampleBlogPost: BlogPost = {
 <p>A professional setup typically takes 2-3 hours and can transform how your guitar feels and sounds. Contact us today to schedule your guitar setup!</p>
   `,
   category: "setups",
-  featuredImage: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=600",
-  published: true,
-  publishedAt: new Date("2024-01-15"),
-  createdAt: new Date("2024-01-15"),
-  updatedAt: new Date("2024-01-15"),
+  publishedAt: "2024-01-15",
+  author: "Guitar Repair of Tampa Bay",
+  readTime: "5 min",
+  tags: ["setup", "maintenance"],
 };
 
 export default function BlogPost() {
   const params = useParams();
   const slug = params.slug;
 
-  // TODO: Replace with actual API call when backend is implemented
-  const { data: blogPost = sampleBlogPost, isLoading, error } = useQuery({
-    queryKey: ["/api/blog", slug],
-    enabled: false, // Disable until API is implemented
-  });
+  // Using static sample post until backend/API is added
+  const typedBlogPost = sampleBlogPost;
 
-  const typedBlogPost = blogPost as BlogPost;
-
-  const formatDate = (date: Date) => {
+  const formatDate = (date: string | Date) => {
     return new Intl.DateTimeFormat('en-US', {
       year: 'numeric',
       month: 'long',
@@ -89,7 +82,7 @@ export default function BlogPost() {
     return Math.ceil(wordCount / wordsPerMinute);
   };
 
-  const shareUrl = window.location.href;
+  const shareUrl = typeof window !== 'undefined' ? window.location.href : '';
   const shareTitle = typedBlogPost?.title || "";
 
   const shareLinks = {
@@ -98,19 +91,7 @@ export default function BlogPost() {
     linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`,
   };
 
-  if (isLoading) {
-    return (
-      <div className="section-padding">
-        <div className="container">
-          <div className="text-center py-12">
-            <p className="text-muted-foreground">Loading blog post...</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (error || !typedBlogPost) {
+  if (!typedBlogPost) {
     return (
       <>
         <SEOHead
@@ -144,9 +125,8 @@ export default function BlogPost() {
           "@type": "Article",
           "headline": typedBlogPost.title,
           "description": typedBlogPost.excerpt,
-          "image": typedBlogPost.featuredImage,
-          "datePublished": typedBlogPost.publishedAt?.toISOString(),
-          "dateModified": typedBlogPost.updatedAt?.toISOString() || new Date().toISOString(),
+          "datePublished": typedBlogPost.publishedAt,
+          "dateModified": typedBlogPost.publishedAt,
           "author": {
             "@type": "Organization",
             "name": "Guitar Repair of Tampa Bay"
@@ -178,7 +158,7 @@ export default function BlogPost() {
               <div className="flex items-center gap-4 text-sm text-muted-foreground">
                 <div className="flex items-center gap-1">
                   <CalendarDays className="w-4 h-4" />
-                  {formatDate(typedBlogPost.publishedAt || typedBlogPost.createdAt || new Date())}
+                  {formatDate(typedBlogPost.publishedAt)}
                 </div>
                 <div className="flex items-center gap-1">
                   <Clock className="w-4 h-4" />
@@ -197,15 +177,9 @@ export default function BlogPost() {
           </header>
 
           {/* Featured Image */}
-          {typedBlogPost.featuredImage && (
-            <div className="mb-8">
-              <img
-                src={typedBlogPost.featuredImage}
-                alt={typedBlogPost.title}
-                className="w-full h-auto rounded-xl shadow-lg"
-              />
-            </div>
-          )}
+          <div className="mb-8 w-full h-64 rounded-xl shadow-lg bg-gradient-to-br from-accent/20 to-accent/40 flex items-center justify-center text-7xl">
+            🎸
+          </div>
 
           {/* Article Content */}
           <div 

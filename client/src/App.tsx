@@ -1,6 +1,4 @@
 import { Switch, Route } from "wouter";
-import { queryClient } from "./lib/queryClient";
-import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
@@ -15,7 +13,7 @@ import Gallery from "@/pages/Gallery";
 import Contact from "@/pages/Contact";
 import Directions from "@/pages/Directions";
 import Suppliers from "@/pages/Suppliers";
-import Quote from "@/pages/Quote";
+import FormSent from "@/pages/FormSent";
 
 function Router() {
   return (
@@ -32,7 +30,14 @@ function Router() {
           <Route path="/contact" component={Contact} />
           <Route path="/directions" component={Directions} />
           <Route path="/suppliers" component={Suppliers} />
-          <Route path="/quote" component={Quote} />
+          <Route path="/quote" component={() => {
+            // Simple client-side redirect for existing /quote links
+            if (typeof window !== 'undefined') {
+              window.history.replaceState({}, '', '/contact');
+            }
+            return Contact();
+          }} />
+          <Route path="/form-sent" component={FormSent} />
           <Route component={NotFound} />
         </Switch>
       </main>
@@ -43,12 +48,10 @@ function Router() {
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Router />
-      </TooltipProvider>
-    </QueryClientProvider>
+    <TooltipProvider>
+      <Toaster />
+      <Router />
+    </TooltipProvider>
   );
 }
 

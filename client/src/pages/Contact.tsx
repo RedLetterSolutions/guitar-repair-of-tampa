@@ -107,9 +107,8 @@ export default function Contact() {
                   <div>
                     <h3 className="font-semibold text-foreground mb-2">Hours</h3>
                     <div className="text-muted-foreground space-y-1 text-sm">
-                      <p>Monday - Friday: {siteConfig.hours.monday}</p>
-                      <p>Saturday: {siteConfig.hours.saturday}</p>
-                      <p>Sunday: {siteConfig.hours.sunday}</p>
+                      <p>Tuesday - Saturday: {siteConfig.hours.tuesday}</p>
+                      <p>Sunday - Monday: {siteConfig.hours.sunday}</p>
                     </div>
                   </div>
                 </div>

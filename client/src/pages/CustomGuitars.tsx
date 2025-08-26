@@ -1,31 +1,13 @@
 import { useState } from "react";
 import SEOHead from "@/components/common/SEOHead";
 import ModelCard from "@/components/common/ModelCard";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation } from "@tanstack/react-query";
-import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Checkbox } from "@/components/ui/checkbox";
-import { useToast } from "@/hooks/use-toast";
-import { apiRequest } from "@/lib/queryClient";
 import { CheckCircle } from "lucide-react";
 
-const inquirySchema = z.object({
-  name: z.string().min(1, "Name is required"),
-  email: z.string().email("Valid email is required"),
-  phone: z.string().optional(),
-  modelType: z.string().optional(),
-  budgetRange: z.string().optional(),
-  description: z.string().min(10, "Description must be at least 10 characters"),
-  consent: z.boolean().refine(val => val === true, "You must consent to be contacted"),
-});
-
-type InquiryFormData = z.infer<typeof inquirySchema>;
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -54,7 +36,7 @@ const models = [
       "Custom pickup configuration", 
       "Professional setup included"
     ],
-    imageUrl: "https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400"
+    imageUrl: "https://images.unsplash.com/photo-1525201548942-d8732f6617a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400"
   },
   {
     name: "Crackercaster S",
@@ -65,7 +47,7 @@ const models = [
       "Three single-coil pickups",
       "Tremolo bridge system"
     ],
-    imageUrl: "https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400"
+    imageUrl: "https://images.unsplash.com/photo-1511735111819-9a3f7709049c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400"
   },
   {
     name: "Crackercaster 5-String Bass",
@@ -76,56 +58,16 @@ const models = [
       "Active electronics",
       "35\" scale length"
     ],
-    imageUrl: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400"
+    imageUrl: "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400"
   }
 ];
 
 export default function CustomGuitars() {
   const [selectedModel, setSelectedModel] = useState<string>("");
-  const { toast } = useToast();
-
-  const form = useForm<InquiryFormData>({
-    resolver: zodResolver(inquirySchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      phone: "",
-      modelType: "",
-      budgetRange: "",
-      description: "",
-      consent: false,
-    },
-  });
-
-  const submitMutation = useMutation({
-    mutationFn: async (data: InquiryFormData) => {
-      return apiRequest("POST", "/api/custom-guitar-inquiries", data);
-    },
-    onSuccess: () => {
-      toast({
-        title: "Inquiry Sent!",
-        description: "We'll review your custom guitar inquiry and get back to you soon.",
-      });
-      form.reset();
-      setSelectedModel("");
-    },
-    onError: (error: Error) => {
-      toast({
-        title: "Error",
-        description: error.message || "Failed to send inquiry. Please try again.",
-        variant: "destructive",
-      });
-    },
-  });
 
   const handleModelInquiry = (modelName: string) => {
     setSelectedModel(modelName);
-    form.setValue("modelType", modelName.toLowerCase().replace(/\s+/g, "-"));
     document.getElementById("inquiry-form")?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const onSubmit = (data: InquiryFormData) => {
-    submitMutation.mutate(data);
   };
 
   return (
@@ -174,7 +116,7 @@ export default function CustomGuitars() {
             </div>
             <div>
               <img
-                src="https://pixabay.com/get/g2911f417ef66e257a108439a8ee0d45bf20a12902693982b1ee559e25375eb450fd667d6e801de9926910b885e3136a9c06a1ce2357db146213b60235293c9eb_1280.jpg"
+                src="https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
                 alt="Beautiful wood grain patterns on custom guitar"
                 className="rounded-xl shadow-lg w-full h-auto"
                 loading="lazy"
@@ -229,51 +171,61 @@ export default function CustomGuitars() {
                 </div>
               )}
 
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+  <form
+    data-rls-contact="guitar_repair_of_tampa_bay"
+    method="post"
+    noValidate
+    className="space-y-6"
+    onSubmit={(e) => {
+      const form = e.currentTarget as HTMLFormElement & { __submitting?: boolean };
+      if (form.__submitting) {
+        e.preventDefault();
+        return;
+      }
+      form.__submitting = true;
+      const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+      if (btn) {
+        btn.disabled = true;
+        const original = btn.textContent;
+        btn.dataset.originalText = original || '';
+        btn.textContent = 'Submitting...';
+      }
+      setTimeout(() => {
+        // Safety unlock after 12s if backend doesn't respond (avoids permanent lock)
+        if (form.__submitting) {
+          form.__submitting = false;
+          const btn2 = form.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+          if (btn2 && btn2.dataset.originalText) {
+            btn2.disabled = false;
+            btn2.textContent = btn2.dataset.originalText;
+          }
+        }
+      }, 12000);
+    }}
+  >
+        <input type="text" name="_hp" tabIndex={-1} autoComplete="off" style={{ display: 'none' }} />
+        <input type="hidden" name="formType" value="custom-guitar-inquiry" />
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="inquiry-name">Name *</Label>
-                    <Input
-                      id="inquiry-name"
-                      {...form.register("name")}
-                      className="form-input"
-                      placeholder="Your full name"
-                    />
-                    {form.formState.errors.name && (
-                      <p className="text-destructive text-sm">{form.formState.errors.name.message}</p>
-                    )}
+        <Input id="inquiry-name" name="name" required className="form-input" placeholder="Your full name" />
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="inquiry-email">Email *</Label>
-                    <Input
-                      id="inquiry-email"
-                      type="email"
-                      {...form.register("email")}
-                      className="form-input"
-                      placeholder="your@email.com"
-                    />
-                    {form.formState.errors.email && (
-                      <p className="text-destructive text-sm">{form.formState.errors.email.message}</p>
-                    )}
+                    <Input id="inquiry-email" name="email" type="email" required className="form-input" placeholder="your@email.com" />
                   </div>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="inquiry-phone">Phone</Label>
-                    <Input
-                      id="inquiry-phone"
-                      type="tel"
-                      {...form.register("phone")}
-                      className="form-input"
-                      placeholder="(813) 555-0123"
-                    />
+                    <Input id="inquiry-phone" name="phone" type="tel" className="form-input" placeholder="(813) 555-0123" />
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="model-type">Model Interest</Label>
-                    <Select onValueChange={(value) => form.setValue("modelType", value)}>
+                    <Select onValueChange={(value) => { const hidden = document.getElementById('modelTypeHidden') as HTMLInputElement | null; if (hidden) hidden.value = value; }}>
                       <SelectTrigger className="form-input">
                         <SelectValue placeholder="Select a model" />
                       </SelectTrigger>
@@ -289,7 +241,7 @@ export default function CustomGuitars() {
 
                 <div className="space-y-2">
                   <Label htmlFor="budget-range">Budget Range</Label>
-                  <Select onValueChange={(value) => form.setValue("budgetRange", value)}>
+                  <Select onValueChange={(value) => { const hidden = document.getElementById('budgetRangeHidden') as HTMLInputElement | null; if (hidden) hidden.value = value; }}>
                     <SelectTrigger className="form-input">
                       <SelectValue placeholder="Select budget range" />
                     </SelectTrigger>
@@ -306,38 +258,25 @@ export default function CustomGuitars() {
                   <Label htmlFor="inquiry-description">Describe Your Vision *</Label>
                   <Textarea
                     id="inquiry-description"
-                    {...form.register("description")}
+                    name="message"
+                    required
                     rows={4}
                     className="form-input resize-none"
                     placeholder="Tell us about your dream guitar - playing style, tonal preferences, visual inspiration, etc."
                   />
-                  {form.formState.errors.description && (
-                    <p className="text-destructive text-sm">{form.formState.errors.description.message}</p>
-                  )}
+                </div>
+                <input type="hidden" id="modelTypeHidden" name="modelType" />
+                <input type="hidden" id="budgetRangeHidden" name="budgetRange" />
+                <div className="space-y-2">
+                  <Label htmlFor="inquiry-attachments">Reference Photos (optional)</Label>
+                  <Input id="inquiry-attachments" name="attachments" type="file" accept="image/*" multiple className="form-input" />
+                  <p className="text-xs text-muted-foreground">Attach inspiration or instrument photos (images only).</p>
                 </div>
 
-                <div className="flex items-start space-x-2">
-                  <Checkbox
-                    id="inquiry-consent"
-                    checked={form.watch("consent")}
-                    onCheckedChange={(checked) => form.setValue("consent", checked as boolean)}
-                  />
-                  <Label htmlFor="inquiry-consent" className="text-sm leading-relaxed">
-                    I agree to be contacted regarding my custom guitar inquiry *
-                  </Label>
-                </div>
-                {form.formState.errors.consent && (
-                  <p className="text-destructive text-sm">{form.formState.errors.consent.message}</p>
-                )}
+                <div className="text-sm text-muted-foreground">We'll contact you about your inquiry. By submitting, you consent to communication via email/phone.</div>
 
                 <div className="text-center">
-                  <Button
-                    type="submit"
-                    disabled={submitMutation.isPending}
-                    className="btn-primary w-full md:w-auto"
-                  >
-                    {submitMutation.isPending ? "Sending..." : "Submit Inquiry"}
-                  </Button>
+                  <Button type="submit" className="btn-primary w-full md:w-auto">Submit Inquiry</Button>
                 </div>
               </form>
             </div>

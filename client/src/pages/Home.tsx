@@ -21,8 +21,7 @@ const structuredData = {
   },
   "telephone": siteConfig.contact.phone,
   "openingHours": [
-    "Mo-Fr 10:00-18:00",
-    "Sa 10:00-16:00"
+    "Tu-Sa 12:00-18:00"
   ],
   "priceRange": "$25-$450",
   "hasMap": `https://maps.google.com/?q=${encodeURIComponent(siteConfig.contact.address.full)}`
@@ -35,7 +34,7 @@ export default function Home() {
       
       {/* Hero Section */}
       <Hero 
-        backgroundImage="https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080"
+        backgroundImage="https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080"
       />
 
       {/* Services Grid */}
@@ -50,21 +49,21 @@ export default function Home() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <div className="text-2xl">🏆</div>
               </div>
-              <h3 className="text-xl font-semibold mb-3">30+ Years Experience</h3>
-              <p className="text-muted-foreground">Industry veterans from Washburn, Gibson, Peavey, Parker, and Dean Guitars</p>
+              <h3 className="text-xl font-semibold mb-3">Industry Experience</h3>
+              <p className="text-muted-foreground">Industry veteran knowledge and experience</p>
             </div>
 
             <div className="text-center">
               <div className="bg-accent/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Zap className="w-8 h-8 text-accent" />
               </div>
-              <h3 className="text-xl font-semibold mb-3">Fast Turnaround</h3>
-              <p className="text-muted-foreground">Most repairs completed within 7-10 business days with rush service available</p>
+              <h3 className="text-xl font-semibold mb-3">All work is Guaranteed</h3>
+              <p className="text-muted-foreground">Enjoy peace of mind knowing your instrument is in reliable hands and backed by our commitment to quality.</p>
             </div>
 
             <div className="text-center">
@@ -75,13 +74,6 @@ export default function Home() {
               <p className="text-muted-foreground">Competitive rates with no hidden fees. Labor only pricing, parts extra</p>
             </div>
 
-            <div className="text-center">
-              <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <div className="text-2xl">🎻</div>
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Vintage Expertise</h3>
-              <p className="text-muted-foreground">Specialized knowledge in vintage and rare instrument restoration</p>
-            </div>
           </div>
         </div>
       </section>
@@ -104,7 +96,7 @@ export default function Home() {
               </div>
               <div className="relative">
                 <img
-                  src="https://images.unsplash.com/photo-1511735111819-9a3f7709049c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&h=600"
+                  src="https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&h=600"
                   alt="Crackercaster custom guitar with Florida wood"
                   className="rounded-xl shadow-lg w-full h-auto"
                   loading="lazy"
@@ -135,9 +127,8 @@ export default function Home() {
               <Clock className="w-12 h-12 mx-auto mb-4 text-primary" />
               <h3 className="text-xl font-semibold mb-3">Hours</h3>
               <div className="text-muted-foreground space-y-1">
-                <p>Mon - Fri: {siteConfig.hours.monday}</p>
-                <p>Saturday: {siteConfig.hours.saturday}</p>
-                <p>Sunday: {siteConfig.hours.sunday}</p>
+                <p>Tuesday - Saturday: {siteConfig.hours.tuesday}</p>
+                <p>Sunday - Monday: {siteConfig.hours.sunday}</p>
               </div>
             </div>
 

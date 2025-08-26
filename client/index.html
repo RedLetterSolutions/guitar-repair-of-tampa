@@ -12,5 +12,75 @@
     <script type="module" src="/src/main.tsx"></script>
     <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
     <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script>
+    <!-- RLS Contact Form Service -->
+    <script src="https://cdn.jsdelivr.net/gh/RedLetterSolutions/rls-contact-forms@main/rls-contact-api.min.js" defer></script>
+    <script>
+      // Initialize RLS Contact API once (guards repeated init that can cause multiple submissions)
+      (function() {
+        const FORM_SELECTOR = 'form[data-rls-contact]';
+        let refreshAttempts = 0;
+        const maxRefreshAttempts = 10;
+        function pollForForms() {
+          if (window.RLSContact && document.querySelectorAll(FORM_SELECTOR).length) {
+            window.RLSContact.refresh();
+          } else if (refreshAttempts < maxRefreshAttempts) {
+            refreshAttempts++;
+            setTimeout(pollForForms, 300);
+          }
+        }
+
+        function attachFallbackHandlers() {
+            document.querySelectorAll(FORM_SELECTOR).forEach(function(f) {
+              if (f.__rlsFallbackBound) return;
+              f.__rlsFallbackBound = true;
+              f.addEventListener('submit', function(ev) {
+                // If RLS script didn't hijack submission (no ajax marker), allow normal post OR manual redirect
+                // We rely on the script normally; fallback: delay then redirect user-friendly page
+                setTimeout(() => {
+                  if (!window.__rlsContactInitDone) return; // still initializing
+                  // If still on same page after 4s, redirect to confirmation route
+                  if (document.contains(f)) {
+                    if (!location.pathname.includes('/form-sent')) {
+                      // App uses client-side routing; push path hash for wouter
+                      history.pushState({}, '', '/form-sent');
+                      // Dispatch popstate so router updates
+                      window.dispatchEvent(new PopStateEvent('popstate'));
+                    }
+                  }
+                }, 4000);
+              });
+            });
+        }
+
+        function initRLSContact() {
+          if (window.__rlsContactInitDone) return; // already initialized
+          if (window.RLSContact) {
+            window.__rlsContactInitDone = true;
+            console.log('[RLS] Initializing Contact API');
+            try {
+              window.RLSContact.init({
+                siteId: 'guitar_repair_of_tampa_bay',
+                debug: true
+              });
+              // Initial refresh & poll for late-mounted forms
+              setTimeout(pollForForms, 150);
+              attachFallbackHandlers();
+            } catch (e) {
+              console.warn('[RLS] Init error', e);
+              // allow retry once if init failed
+              window.__rlsContactInitDone = false;
+              setTimeout(initRLSContact, 200);
+            }
+          } else {
+            // Retry until script loads
+            setTimeout(initRLSContact, 100);
+          }
+        }
+        // Use a single DOMContentLoaded listener
+        window.addEventListener('DOMContentLoaded', initRLSContact, { once: true });
+        // Fallback after full load in case DOMContentLoaded missed or script late
+        window.addEventListener('load', initRLSContact, { once: true });
+      })();
+    </script>
   </body>
 </html>

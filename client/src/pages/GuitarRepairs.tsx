@@ -62,7 +62,7 @@ export default function GuitarRepairs() {
             <h1 className="text-4xl lg:text-5xl font-bold text-primary mb-6">
               Guitar Repair Services
             </h1>
-            <p className="text-xl text-secondary max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Professional repair services for all types of guitars. From simple setups to complex structural repairs, 
               we have the expertise to restore your instrument to perfect playing condition.
             </p>
@@ -71,26 +71,27 @@ export default function GuitarRepairs() {
           {/* Service Categories */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             <div className="bg-white rounded-xl shadow-soft p-8 border border-wood-light">
-              <h3 className="text-xl font-bold text-primary mb-4">Setups & Maintenance</h3>
-              <p className="text-secondary mb-4 leading-relaxed">
+              <h3 className="text-xl font-bold text-primary mb-4">Setups</h3>
+              <p className="text-muted-foreground mb-4 leading-relaxed">
                 Complete instrument optimization including action adjustment, intonation, and general maintenance 
                 to ensure optimal playability.
               </p>
-              <ul className="text-sm text-secondary space-y-2">
+              <ul className="text-sm text-muted-foreground space-y-2">
                 <li>• String height adjustment</li>
                 <li>• Intonation setup</li>
                 <li>• Pickup height adjustment</li>
+                <li>• Truss rod adjustment</li>
+                <li>• Inspect electronics and Hardware</li>
                 <li>• Restring and polish</li>
               </ul>
             </div>
 
             <div className="bg-white rounded-xl shadow-soft p-8 border border-wood-light">
               <h3 className="text-xl font-bold text-primary mb-4">Electronics</h3>
-              <p className="text-secondary mb-4 leading-relaxed">
-                Full electronics services including pickup installation, wiring, shielding, and preamp systems 
-                for enhanced tone and functionality.
+              <p className="text-muted-foreground mb-4 leading-relaxed">
+                Full electronics services including pickup installation, custom wiring, shielding, preamp installation and more.
               </p>
-              <ul className="text-sm text-secondary space-y-2">
+              <ul className="text-sm text-muted-foreground space-y-2">
                 <li>• Pickup installation</li>
                 <li>• Complete rewiring</li>
                 <li>• Shielding installation</li>
@@ -100,11 +101,11 @@ export default function GuitarRepairs() {
 
             <div className="bg-white rounded-xl shadow-soft p-8 border border-wood-light">
               <h3 className="text-xl font-bold text-primary mb-4">Structural Repairs</h3>
-              <p className="text-secondary mb-4 leading-relaxed">
+              <p className="text-muted-foreground mb-4 leading-relaxed">
                 Expert structural repair services for serious damage including headstock repairs, neck resets, 
                 and crack repairs.
               </p>
-              <ul className="text-sm text-secondary space-y-2">
+              <ul className="text-sm text-muted-foreground space-y-2">
                 <li>• Headstock repairs</li>
                 <li>• Neck resets</li>
                 <li>• Crack repairs</li>
@@ -118,7 +119,7 @@ export default function GuitarRepairs() {
             <div className="bg-primary text-cream p-8">
               <h2 className="text-3xl font-bold mb-4">Service Pricing</h2>
               <p className="text-cream/90 text-lg">
-                Transparent pricing for all our repair services. Labor only - parts are additional.
+                Prices are for labor only. Parts extra.
               </p>
             </div>
 
