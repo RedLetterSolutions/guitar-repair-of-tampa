@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, Guitar } from "lucide-react";
+import { Menu, X, Guitar, Music2 } from "lucide-react";
 import { siteConfig } from "@shared/config";
 
 export default function Header() {
@@ -26,13 +26,25 @@ export default function Header() {
       <nav className="container" aria-label="Main navigation">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3 group">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center group-hover:scale-105 transition-all duration-200 shadow-soft">
-              <Guitar className="w-6 h-6 text-primary-foreground" />
+          <Link href="/" className="flex items-center space-x-4 group">
+            <div className="relative">
+              {/* Main logo container with gradient and shadows */}
+              <div className="w-12 h-12 bg-gradient-to-br from-primary via-primary to-primary-foreground/20 rounded-xl flex items-center justify-center group-hover:scale-105 transition-all duration-300 shadow-strong border border-brass/30">
+                <Guitar className="w-7 h-7 text-primary-foreground drop-shadow-sm" />
+                {/* Accent music note */}
+                <Music2 className="w-3 h-3 text-brass absolute -top-1 -right-1 opacity-75" />
+              </div>
+              {/* Subtle glow effect on hover */}
+              <div className="absolute inset-0 w-12 h-12 bg-brass/20 rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-300 blur-sm -z-10" />
             </div>
-            <span className="text-xl lg:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
-              {siteConfig.name}
-            </span>
+            <div className="flex flex-col">
+              <span className="text-xl lg:text-2xl font-bold text-foreground group-hover:text-primary transition-colors leading-tight">
+                Guitar Repair
+              </span>
+              <span className="text-sm lg:text-base font-medium text-brass group-hover:text-primary transition-colors -mt-1">
+                of Tampa Bay
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
