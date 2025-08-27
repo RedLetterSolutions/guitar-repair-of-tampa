@@ -42,16 +42,10 @@ export const siteConfig = {
   },
   team: [
     {
-      name: "Michael Donner",
+      name: "Bob Sheeks",
       title: "Master Luthier & Owner",
-      bio: "With over 20 years of experience in guitar repair and custom building, Michael brings unparalleled expertise to every project. He has worked with major guitar manufacturers and specializes in vintage instrument restoration and custom electronics.",
-      expertise: ["Vintage Guitar Restoration", "Custom Electronics", "Fret Work", "Setup & Maintenance"]
-    },
-    {
-      name: "Ben Chafin", 
-      title: "Senior Guitar Technician",
-      bio: "Ben's passion for guitars began in his teens and has grown into a decade-long career in professional guitar repair. He specializes in acoustic instruments and has extensive experience with both modern and vintage guitars.",
-      expertise: ["Acoustic Guitar Repair", "Bridge Work", "Neck Adjustments", "Hardware Installation"]
+      bio: "Bob brings extensive experience in guitar repair and custom building to Guitar Repair of Tampa Bay. His passion for craftsmanship and dedication to excellence ensures every instrument receives the expert care it deserves.",
+      expertise: ["Guitar Repair", "Custom Building", "Setup & Maintenance", "Instrument Restoration"]
     }
   ],
   services: [
