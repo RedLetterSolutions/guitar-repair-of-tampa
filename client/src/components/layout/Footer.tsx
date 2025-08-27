@@ -74,15 +74,11 @@ export default function Footer() {
             </div>
             <div className="space-y-2">
               <div className="flex justify-between text-cream/80">
-                <span>Monday - Friday</span>
-                <span className="font-medium">{siteConfig.hours.monday}</span>
+                <span>Tuesday - Saturday</span>
+                <span className="font-medium">{siteConfig.hours.tuesday}</span>
               </div>
               <div className="flex justify-between text-cream/80">
-                <span>Saturday</span>
-                <span className="font-medium">{siteConfig.hours.saturday}</span>
-              </div>
-              <div className="flex justify-between text-cream/80">
-                <span>Sunday</span>
+                <span>Sunday - Monday</span>
                 <span className="font-medium text-brass">{siteConfig.hours.sunday}</span>
               </div>
             </div>
