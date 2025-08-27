@@ -9,7 +9,7 @@ export const siteConfig = {
   contact: {
     phone: "(813) 304-2560",
     phoneRaw: "+18133042560",
-    email: "info@guitarrepairoftampabay.com",
+    email: "luthier@guitarrepairoftampabay.com",
     address: {
       street: "7705 Ann Ballard Road",
       city: "Tampa",
