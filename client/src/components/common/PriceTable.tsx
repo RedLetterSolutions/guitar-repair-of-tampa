@@ -85,7 +85,6 @@ const priceData = {
     title: "Other Services",
     color: "primary",
     items: [
-      { service: "Bolt-on neck replace (incl. light fret dress, nut, tuners, setup; no finish)", price: "$125+" },
       { service: "Endpin jack", price: "$35+" },
       { service: "Neck reset", price: "$450+" },
       { service: "Headstock repair", price: "$100+" },
