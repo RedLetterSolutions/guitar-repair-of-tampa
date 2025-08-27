@@ -87,7 +87,6 @@ const priceData = {
     items: [
       { service: "Endpin jack", price: "$35+" },
       { service: "Neck reset", price: "$450+" },
-      { service: "Headstock repair", price: "$100+" },
       { service: "Headstock repair (without touch up)", price: "$100+" },
       { service: "Crack cleat (per inch)", price: "$30" },
       { service: "Pickguard replace", price: "$50+" },
