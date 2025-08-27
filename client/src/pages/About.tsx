@@ -7,8 +7,8 @@ export default function About() {
   return (
     <>
       <SEOHead
-        title="About Us - Master Luthiers & Guitar Repair Experts"
-        description="Meet Michael Donner and Ben Chafin, master luthiers with 30+ years combined experience from major guitar manufacturers. Learn about our mission and values."
+        title="About Us - Master Luthier & Guitar Repair Expert"
+        description="Meet Bob Sheeks, master luthier and owner of Guitar Repair of Tampa Bay. Learn about our mission and values."
       />
 
       <div className="section-padding bg-muted/50">
@@ -16,7 +16,7 @@ export default function About() {
           <div className="text-center mb-16">
             <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">About Us</h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Meet the master craftsmen behind Guitar Repair of Tampa Bay. With decades of industry experience 
+              Meet the master craftsman behind Guitar Repair of Tampa Bay. With industry experience 
               and a passion for excellence, we bring unmatched expertise to every repair and custom build.
             </p>
           </div>
@@ -42,7 +42,7 @@ export default function About() {
               <h2 className="text-3xl font-bold text-foreground mb-4">Our Mission & Values</h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
                 We believe every guitar deserves expert care and attention. Whether it's a vintage instrument needing restoration 
-                or a modern guitar requiring a simple setup, we bring decades of combined experience and a genuine passion for 
+                or a modern guitar requiring a simple setup, we bring extensive experience and a genuine passion for 
                 the craft to every job.
               </p>
             </div>
